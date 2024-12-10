@@ -1,0 +1,34 @@
+{
+    "tasks":[
+        {
+            "id": "1",
+            "title": "Proyecto de trabajo",
+            "description": "Entregar informe de avance",
+            "dueDate": "2024-12-15",
+            "priority": "high",
+            "category": "work",
+            "completed": false,
+            "createdAt": "2024-12-09"
+          },
+          {
+            "id": "2",
+            "title": "Estudiar para examen",
+            "description": "Repasar notas y hacer prácticas",
+            "dueDate": "2024-12-20",
+            "priority": "medium",
+            "category": "study",
+            "completed": false,
+            "createdAt": "2024-12-08"
+          },
+          {
+            "id": "3",
+            "title": "Cumpleaños de amigo",
+            "description": "Comprar regalo y enviar tarjeta",
+            "dueDate": "2024-12-12",
+            "priority": "low",
+            "category": "personal",
+            "completed": true,
+            "createdAt": "2024-12-05"
+          }
+    ]
+}
