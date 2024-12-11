@@ -1,2 +1,24 @@
-#obtiene todas las tareas
+###obtiene todas las tareas
 GET http://localhost:3000/tasks
+
+
+
+
+###Crear  una nueva tarea
+POST http://localhost:3000/tasks
+Content-Type: :application/json
+
+{
+   "id":"4",
+   "title": "Revisar y pagar facturas",
+   "description": "Revisar facturas pendientes y realizar pagos",
+   "dueDate": "2024-12-18",
+   "priority": "high",
+   "category": "personal",
+   "completed": false,
+   "createdAt": "2024-12-10"
+}
+###Elimnar tarea por id
+DELETE  http://localhost:3000/tasks/4c59c324-d9be-44ee-9b20-f741ff5b7329
+
+

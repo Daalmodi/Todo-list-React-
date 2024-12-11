@@ -2,6 +2,6 @@ import TaskModel from "./TaskModel";
 
 interface ActionModel {
     type: string;
-    tasks?: TaskModel[];
+    task?: TaskModel[];
   }
 export default ActionModel;

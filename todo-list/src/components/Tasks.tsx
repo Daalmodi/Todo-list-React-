@@ -1,5 +1,5 @@
 import Task from "./Task"
-import TaskProps from "../models/PropsModel"
+import TaskProps from "../models/TaskProps"
 
 const Tasks: React.FC<TaskProps>=({task})=>{
 return(
