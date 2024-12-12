@@ -1,15 +1,20 @@
 import Task from "./Task"
 import TaskProps from "../models/TaskProps"
 
-const Tasks: React.FC<TaskProps>=({task})=>{
+
+
+const Tasks: React.FC<TaskProps>=({task,oneDeleteTask,oneUpdateTask,onUpdatebox})=>{
+
+
+
 return(
     <>
     <h1> ToDO List</h1>
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Estado</th>
+                    <th>Id</th>
                     <th>Titulo</th>
                     <th>Descripción</th>
                     <th>Fecha Limite</th>
@@ -20,7 +25,7 @@ return(
                 </tr>
             </thead>
             <tbody>
-                 <Task task={task}/>
+                 <Task task={task} onDelete={oneDeleteTask} onUpdate={oneUpdateTask} onUpdatebox={onUpdatebox}/>
             </tbody>
             
         </table>

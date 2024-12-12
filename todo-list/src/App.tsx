@@ -3,11 +3,16 @@ import Tasks from './components/Tasks';
 import taskReducer from './reducers/taskReducer';
 import StateModel from './models/StateModel';
 import TaskModel from './models/TaskModel';
-import { ADD, GET } from './reducers/actions';
+import { ADD, DELETE, GET, UPDATE } from './reducers/actions';
 import getTasks from './api/getTasks';
 import './App.css'
 import createTask from './api/createTask';
 import AddTask from './components/AddTask';
+import deleteTask from './api/deleteTask';
+import updateTaskBox from './api/updateTaskBox';
+
+
+
 
 function App() {
 
@@ -31,14 +36,40 @@ function App() {
   const ceateTask = async(taskInfo:TaskModel) =>{
    const taskData:TaskModel[] = await createTask(taskInfo);
    dispatch({type: ADD,task:taskData});
-    console.log(taskData);
+    
+  }
+
+  const ondeDeleteHandler = async(id:string)=>{
+    if(await deleteTask(id)){
+      dispatch({type:DELETE,id});
+    }
+  }
+
+  const onUpdateHandle = async(task:TaskModel)=>{
+    console.log(task);
+    
+    
+  }
+
+  const checkBoxHandle =async(id:string,box:boolean)=>{
+    if(box===true){
+      box=false
+    }else{
+      box=true
+    }
+   if(await updateTaskBox(id,box)){
+
+    dispatch({type:UPDATE,id,box})
+    
+   }
+    
     
   }
 
   return (
     <div>
       <AddTask onCreateTask={ceateTask}></AddTask>
-      <Tasks task={state.tasks}></Tasks>
+      <Tasks task={state.tasks}  oneDeleteTask={ondeDeleteHandler} oneUpdateTask={onUpdateHandle} onUpdatebox={checkBoxHandle}></Tasks>
       
     </div>
   )

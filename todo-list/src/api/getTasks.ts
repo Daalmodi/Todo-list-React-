@@ -9,7 +9,7 @@ try {
 
 } catch (error) {
     console.error("No hubo conexion al backend "+error)
-    return null
+    return null;
 }
 }
 export default getTasks;

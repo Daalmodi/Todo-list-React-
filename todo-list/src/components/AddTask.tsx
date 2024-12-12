@@ -20,7 +20,6 @@ const AddTask : React.FC<AddTaskProps>=({onCreateTask})=>{
     const handleSubmit= (event: React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
         onCreateTask(task);
-        console.log(task);
         
     };
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
