@@ -3,13 +3,14 @@ import Tasks from './components/Tasks';
 import taskReducer from './reducers/taskReducer';
 import StateModel from './models/StateModel';
 import TaskModel from './models/TaskModel';
-import { ADD, DELETE, GET, UPDATE } from './reducers/actions';
+import { ADD, DELETE, GET, UPDATE, UPDATE_STATE_TASK } from './reducers/actions';
 import getTasks from './api/getTasks';
 import './App.css'
 import createTask from './api/createTask';
 import AddTask from './components/AddTask';
 import deleteTask from './api/deleteTask';
 import updateTaskBox from './api/updateTaskBox';
+import updateTask from './api/updateTask';
 
 
 //Modal
@@ -52,27 +53,32 @@ function App() {
   }
 
   const onUpdateHandle = async(task:TaskModel)=>{
-    // console.log(task.title);
-    // console.log(task.dueDate);
-    // console.log(task.completed);
-    // console.log(task.description);
-    
-    
-    
-    
-    
+    const id = task.id;
+    const title =task.title;
+    const description = task.description;
+    const dueDate = task.dueDate.toISOString().split('T')[0];
+    const priority = task.priority;
+    const category = task.category;
+    const completed = task.completed;
+
+    if(await updateTask(id,task)){
+  
+      
+      dispatch({type:UPDATE,id,title,description, dueDate,priority,category,completed})
+      
+    }
     
   }
 
-  const checkBoxHandle =async(id:string,box:boolean)=>{
-    if(box===true){
-      box=false
+  const checkBoxHandle =async(id:string,completed:boolean)=>{
+    if(completed===true){
+      completed=false
     }else{
-      box=true
+      completed=true
     }
-   if(await updateTaskBox(id,box)){
+   if(await updateTaskBox(id,completed)){
 
-    dispatch({type:UPDATE,id,box})
+    dispatch({type:UPDATE_STATE_TASK,id,completed})
     
    }
     

@@ -10,7 +10,8 @@ const Tasks: React.FC<TaskProps>=({task,oneDeleteTask,onUpdateTask,onUpdatebox})
 return(
     <>
     <h1> ToDO List</h1>
-        <table>
+    <div className="table-responsive">
+        <table className="table">
             <thead>
                 <tr>
                     <th>Estado</th>
@@ -29,6 +30,7 @@ return(
             </tbody>
             
         </table>
+    </div>
     </>
 
 )
