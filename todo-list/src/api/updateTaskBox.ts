@@ -2,9 +2,6 @@ import axios from "axios";
 
 const updateTaskBox = async(id:string,box:boolean)=>{
     try {
-
-        
-        
         const newbox={
             completed:box
         };

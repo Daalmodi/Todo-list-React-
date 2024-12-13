@@ -3,7 +3,7 @@ import TaskProps from "../models/TaskProps"
 
 
 
-const Tasks: React.FC<TaskProps>=({task,oneDeleteTask,oneUpdateTask,onUpdatebox})=>{
+const Tasks: React.FC<TaskProps>=({task,oneDeleteTask,onUpdateTask,onUpdatebox})=>{
 
 
 
@@ -25,7 +25,7 @@ return(
                 </tr>
             </thead>
             <tbody>
-                 <Task task={task} onDelete={oneDeleteTask} onUpdate={oneUpdateTask} onUpdatebox={onUpdatebox}/>
+                 <Task task={task} onDelete={oneDeleteTask} onUpdateTask={onUpdateTask} onUpdatebox={onUpdatebox}/>
             </tbody>
             
         </table>

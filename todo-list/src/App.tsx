@@ -12,10 +12,16 @@ import deleteTask from './api/deleteTask';
 import updateTaskBox from './api/updateTaskBox';
 
 
+//Modal
+
+
 
 
 function App() {
+ 
 
+ 
+  
   const initialState: StateModel = {
     tasks: [],
   };
@@ -46,7 +52,14 @@ function App() {
   }
 
   const onUpdateHandle = async(task:TaskModel)=>{
-    console.log(task);
+    // console.log(task.title);
+    // console.log(task.dueDate);
+    // console.log(task.completed);
+    // console.log(task.description);
+    
+    
+    
+    
     
     
   }
@@ -69,8 +82,11 @@ function App() {
   return (
     <div>
       <AddTask onCreateTask={ceateTask}></AddTask>
-      <Tasks task={state.tasks}  oneDeleteTask={ondeDeleteHandler} oneUpdateTask={onUpdateHandle} onUpdatebox={checkBoxHandle}></Tasks>
+      <Tasks task={state.tasks}  oneDeleteTask={ondeDeleteHandler} onUpdateTask={onUpdateHandle} onUpdatebox={checkBoxHandle}></Tasks>
+
+
       
+
     </div>
   )
 };
