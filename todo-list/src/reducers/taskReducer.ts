@@ -6,6 +6,7 @@ import { ADD, DELETE, GET, UPDATE, UPDATE_STATE_TASK } from "./actions";
 
 
 const taskReducer=(state:StateModel,action:ActionModel):StateModel =>{
+    localStorage.setItem("TASK", JSON.stringify(state.tasks));
     switch(action.type){
         case GET:
             return {
@@ -40,7 +41,7 @@ const taskReducer=(state:StateModel,action:ActionModel):StateModel =>{
             return{
                 ...state,
                 tasks: state.tasks.map((task)=>{
-                    console.log(task.id);
+                    
                     
                     if(task.id === action.id){
                         return{...task,

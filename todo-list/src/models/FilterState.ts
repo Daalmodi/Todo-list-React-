@@ -1,6 +1,6 @@
 interface FilterState {
 
-    status: 'all' | 'completed' | 'pending';
+    status: 'all' | 'completed' | 'pending' | undefined;
     
     priority: string | undefined;
     

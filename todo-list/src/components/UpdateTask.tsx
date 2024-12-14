@@ -4,7 +4,7 @@ import TaskProps from "../models/TaskProps";
 import Form from 'react-bootstrap/Form';
 const UpdateTask:React.FC<TaskProps>=({task,idUpdate,onUpdate})=>{
     
-    const taskToUpdate = task.find((t) => t.id === idUpdate);
+    const taskToUpdate = task?.find((t) => t.id === idUpdate);
     
     const[title,setTitle] =useState(taskToUpdate?.title);
     const[description,setdescription] =useState(taskToUpdate?.description);
@@ -14,12 +14,12 @@ const UpdateTask:React.FC<TaskProps>=({task,idUpdate,onUpdate})=>{
     const[completed,setCompleted] =useState(taskToUpdate?.completed);
     
     if (!taskToUpdate) return null;
+    
 
       
 
     
     const handleUpdate = async()=>{
-        console.log(dueDate);
         
         const  updatedTask = {
             id: taskToUpdate.id,

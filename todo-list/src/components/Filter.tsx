@@ -7,9 +7,9 @@ import FilterContext from "../context/FilterContext";
 
 
 const Filter: React.FC<FilterProps>=()=>{
-  const {globalFilter,setglobalFilter}= useContext(FilterContext)||{};
+  const {setglobalFilter}= useContext(FilterContext)||{};
   const [filters, setFilters] = useState<FilterState>({
-    status: "all",
+    status: undefined,
     priority: undefined,
     category: undefined,
     searchTerm: "",
@@ -17,11 +17,15 @@ const Filter: React.FC<FilterProps>=()=>{
   });
 
   useEffect(()=>{
-   
-    console.log(globalFilter);
-    
-    
-  },[globalFilter]);
+    const storedFilter = localStorage.getItem("FILTRO");
+    if (storedFilter) {
+      const filter: FilterState = JSON.parse(storedFilter);
+      setFilters(filter);
+    } 
+  } 
+  ,[]);
+
+
 
   const handleFilterChange=(field:keyof FilterState,value:string | null)=>{
     
@@ -44,6 +48,7 @@ const Filter: React.FC<FilterProps>=()=>{
                 value={filters.status}
                 onChange={(event)=>handleFilterChange("status",event.target.value)}
               >
+                
                 <option value="all">Todo</option>
                 <option value="completed">Completado</option>
                 <option value="pending">Pendiente</option>
@@ -60,6 +65,7 @@ const Filter: React.FC<FilterProps>=()=>{
               onChange={(event)=>handleFilterChange("priority",event.target.value)}
 
               >
+                
                 <option value="all">Todas las Prioridades</option>
                 <option value="high">Alta</option>
                 <option value="medium">Media</option>

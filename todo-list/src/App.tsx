@@ -11,34 +11,18 @@ import AddTask from './components/AddTask';
 import deleteTask from './api/deleteTask';
 import updateTaskBox from './api/updateTaskBox';
 import updateTask from './api/updateTask';
-
 import Filter from './components/Filter';
 import FilterContext from './context/FilterContext';
 import FilterState from './models/FilterState';
-import usePrevious from './ref/usePrevious';
-
-
-
-//Modal
-
-
-
-
-
 function App() {
- 
-
-
-  
   const initialState: StateModel = {
     tasks: [],
   };
  
   const [state,dispatch]=useReducer(taskReducer,initialState);
   
-  
   const [globalFilter,setglobalFilter] = useState<FilterState>({
-    status: "all",
+    status: undefined,
     priority: undefined,
     category: undefined,
     searchTerm: "",
@@ -46,20 +30,27 @@ function App() {
   });
 
   useEffect(()=>{
+    const storedFilter = localStorage.getItem("FILTRO");
+    if (storedFilter) {
+      const filter: FilterState = JSON.parse(storedFilter);
+      setglobalFilter(filter);
+    } 
+  } 
+  ,[]);
+  
+  useEffect(()=>{
     const loadTask = async() => {
       const taskData:TaskModel[] = await getTasks();
       handlefilter(taskData);
-
-      
     };
     
     loadTask();
-  } 
-  ,[globalFilter]);
+  } ,[globalFilter]);
 
-  const ceateTask = async(taskInfo:TaskModel) =>{
+  const onCreateHandler = async(taskInfo:TaskModel) =>{
    const taskData:TaskModel[] = await createTask(taskInfo);
    dispatch({type: ADD,task:taskData});
+   
     
   }
 
@@ -101,93 +92,90 @@ function App() {
     
     
   }
-  const previousFilter = usePrevious<FilterState>(globalFilter);
+
  const handlefilter =(task:TaskModel[])=>{
-   let filteredTasks: TaskModel[]=[];
+   let filteredTasks: TaskModel[]=task;
   
-   const statusChanged = previousFilter?.status !== globalFilter.status;
-   const priorityChanged = previousFilter?.priority !== globalFilter.priority;
-   const categoryChanged = previousFilter?.category !== globalFilter.category;
-   const dueDateOrderChanged = previousFilter?.dueDateOrder !== globalFilter.dueDateOrder;
-   const searchTermChanged = previousFilter?.searchTerm !== globalFilter.searchTerm;
+  
+   
+   const lastFilter = { ...globalFilter };
 
-
-  if(statusChanged){
+    lastFilter.status = globalFilter.status;
     switch(globalFilter.status){
       case 'all':
-        filteredTasks = task;
+      
         break;
       case 'completed':
-        filteredTasks = task.filter((tarea) => tarea.completed === true);
+        filteredTasks = filteredTasks.filter((tarea) => tarea.completed === true);
         break;
       case 'pending':
-        filteredTasks = task.filter((tarea) => tarea.completed === false);
+        filteredTasks = filteredTasks.filter((tarea) => tarea.completed === false);
         break;
     };
-  }
-  if(priorityChanged){
-
+  
+  
+    lastFilter.priority = globalFilter.priority;
     switch(globalFilter.priority){
       case 'all':
-        filteredTasks = task;
+        
         break;
       case 'high':
-        filteredTasks = task.filter((tarea) => tarea.priority === 'high');
+        filteredTasks = filteredTasks.filter((tarea) => tarea.priority === 'high');
         break;
       case 'medium':
-        filteredTasks = task.filter((tarea) => tarea.priority === 'medium');
+        filteredTasks = filteredTasks.filter((tarea) => tarea.priority === 'medium');
         break;
         case 'low':
-          filteredTasks = task.filter((tarea) => tarea.priority === 'low');
+          filteredTasks = filteredTasks.filter((tarea) => tarea.priority === 'low');
           break;
     };
-  }
+  
 
-  if(categoryChanged){
-
+ 
+    lastFilter.category = globalFilter.category;
     switch(globalFilter.category){
       case 'all':
-        filteredTasks = task;
+        
         break;
       case 'work':
-        filteredTasks = task.filter((tarea) => tarea.category === 'work');
+        filteredTasks = filteredTasks.filter((tarea) => tarea.category === 'work');
         break;
       case 'personal':
-        filteredTasks = task.filter((tarea) => tarea.category === 'personal');
+        filteredTasks = filteredTasks.filter((tarea) => tarea.category === 'personal');
         break;
         case 'study':
-          filteredTasks = task.filter((tarea) => tarea.category === 'study');
+          filteredTasks = filteredTasks.filter((tarea) => tarea.category === 'study');
           break;
     };
-  }
-  if(dueDateOrderChanged){
 
+    lastFilter.dueDateOrder = globalFilter.dueDateOrder;
     switch(globalFilter.dueDateOrder){
       case 'default':
-        filteredTasks = task;
+        
         break;
       case 'upward':
-        filteredTasks = task.sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
+        filteredTasks = filteredTasks.sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
         break;
       case 'falling':
-        filteredTasks = task.sort((a, b) => new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime());
+        filteredTasks = filteredTasks.sort((a, b) => new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime());
         break;
     };
-  }
-  if(searchTermChanged){
-
+  
+  
+    lastFilter.searchTerm = globalFilter.searchTerm;
     switch(globalFilter.searchTerm){
       case '':
-        filteredTasks = task;
+        
         break;
       default:
-        filteredTasks = task.filter((tarea) => tarea.title.toLowerCase().includes(globalFilter.searchTerm.toLowerCase()) || tarea.description.toLowerCase().includes(globalFilter.searchTerm.toLowerCase()));
+        filteredTasks = filteredTasks.filter((tarea) => tarea.title.toLowerCase().includes(globalFilter.searchTerm.toLowerCase()) || tarea.description.toLowerCase().includes(globalFilter.searchTerm.toLowerCase()));
         break;
     };
-  }
+  
 
-
+  localStorage.setItem("FILTRO", JSON.stringify(lastFilter));
   dispatch({type: GET,task:filteredTasks});
+
 
  } 
 
@@ -196,7 +184,7 @@ function App() {
     <div>
       <FilterContext.Provider value={{globalFilter,setglobalFilter}}>
 
-        <AddTask onCreateTask={ceateTask}></AddTask>
+        <AddTask onCreateTask={onCreateHandler}></AddTask>
         <Filter></Filter>
         <Tasks task={state.tasks}  oneDeleteTask={ondeDeleteHandler} onUpdateTask={onUpdateHandle} onUpdatebox={checkBoxHandle}></Tasks>  
       </FilterContext.Provider>
