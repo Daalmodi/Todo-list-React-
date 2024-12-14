@@ -1,7 +1,7 @@
 import TaskModel from "./TaskModel";
 
 interface TaskProps {
-    task: TaskModel[];
+    task?: TaskModel[];
     idUpdate?: string;
     oneDeleteTask?:(id:string)=>void;
     onDelete?:(id:string)=>void;

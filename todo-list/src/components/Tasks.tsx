@@ -1,15 +1,15 @@
-import Task from "./Task"
-import TaskProps from "../models/TaskProps"
+import Task from "./Task";
+import TaskProps from "../models/TaskProps";
 
 
 
 const Tasks: React.FC<TaskProps>=({task,oneDeleteTask,onUpdateTask,onUpdatebox})=>{
-
-
+    
 
 return(
     <>
-    <h1> ToDO List</h1>
+    
+
     <div className="table-responsive">
         <table className="table">
             <thead>
@@ -35,4 +35,4 @@ return(
 
 )
 }
-export default Tasks
+export default Tasks;
