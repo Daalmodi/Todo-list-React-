@@ -38,12 +38,22 @@ const Filter: React.FC<FilterProps>=()=>{
 
 
     return (
-        <Form>
+        <Form className="filterComponent">
+          <h2>Filtrar por</h2>
         <Row className="align-items-center">
-          {/* Filtro por estado */}
-          <Col xs={12} md={3}>
+          <Col xs={12} md={12}>
+          <Form.Group controlId="filterSearch">
+              <Form.Label>Busqueda</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Buscar..."
+                value={filters.searchTerm}
+                onChange={(event)=>handleFilterChange("searchTerm",event.target.value)}
+                className="search-bar"
+              />
+            </Form.Group>
             <Form.Group controlId="filterStatus">
-              <Form.Label>Status</Form.Label>
+              <Form.Label>Estado</Form.Label>
               <Form.Select 
                 value={filters.status}
                 onChange={(event)=>handleFilterChange("status",event.target.value)}
@@ -54,10 +64,7 @@ const Filter: React.FC<FilterProps>=()=>{
                 <option value="pending">Pendiente</option>
               </Form.Select>
             </Form.Group>
-          </Col>
-  
-          {/* Filtro por prioridad */}
-          <Col xs={12} md={3}>
+
             <Form.Group controlId="filterPriority">
               <Form.Label>Prioridad</Form.Label>
               <Form.Select
@@ -72,10 +79,7 @@ const Filter: React.FC<FilterProps>=()=>{
                 <option value="low">Baja</option>
               </Form.Select>
             </Form.Group>
-          </Col>
-  
-          {/* Filtro por categoría */}
-          <Col xs={12} md={3}>
+
             <Form.Group controlId="filterCategory">
               <Form.Label>Categorias</Form.Label>
               <Form.Select
@@ -88,11 +92,7 @@ const Filter: React.FC<FilterProps>=()=>{
                 <option value="study">Estudio</option>
               </Form.Select>
             </Form.Group>
-          </Col>
 
-
-          {/* Ordenar por Fecha limite */}
-          <Col xs={12} md={3}>
             <Form.Group controlId="filterDueDate">
               <Form.Label> Ordenar Fecha limite</Form.Label>
               <Form.Select
@@ -105,19 +105,7 @@ const Filter: React.FC<FilterProps>=()=>{
               </Form.Select>
             </Form.Group>
           </Col>
-
-          {/* Búsqueda por término */}
-          <Col xs={12} md={3}>
-            <Form.Group controlId="filterSearch">
-              <Form.Label>Busqueda</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Buscar..."
-                value={filters.searchTerm}
-                onChange={(event)=>handleFilterChange("searchTerm",event.target.value)}
-              />
-            </Form.Group>
-          </Col>
+       
         </Row>
       </Form>
       

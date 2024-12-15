@@ -1,0 +1,125 @@
+@use'../var.scss'as var;
+.taskComponet{
+    padding: 30px; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    scrollbar-color: #e7e5e5 white;
+
+
+
+
+    .tableContainer{
+        padding: 20px; 
+        background-color: white; 
+        border: 1px  ; 
+        border-radius: 10px; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        scrollbar-width: thin;
+        .tables{
+            background-color: white;
+            font-family: var.$primary-font;
+            th:nth-child(1) { /* Estado */
+                width: 5%;
+              }
+        
+              th:nth-child(2) { /* Título */
+                width: 20%;
+              }
+        
+              th:nth-child(3) { /* Descripción */
+                width: 25%;
+              }
+        
+              th:nth-child(4) { /* Fecha Limite */
+                width: 15%;
+              }
+        
+              th:nth-child(5) { /* Prioridad */
+                width: 10%;
+              }
+        
+              th:nth-child(6) { /* Categoría */
+                width: 15%;
+              }
+        
+              th:nth-child(7) { /* Creado en */
+                width: 15%;
+              }
+        
+              th:nth-child(8) { /* Acciones */
+                width: 20%;
+              }
+        }
+
+
+
+        .tablehead{
+            color: var.$primary-green;
+            text-align: center;
+            border-bottom: 2px solid;
+            font-size: 13px;
+        }
+
+        .tablebody{
+
+            td{
+                color: #344a34;
+                padding: 5px;
+                text-align: center;
+            }
+            input[type="checkbox"] {
+                width: 16px; 
+                height: 16px; 
+                accent-color: var.$green-color-light; 
+                background-color: white;
+              }
+
+            .actions{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .pensil{
+                    color: green;
+                }
+                .trash{
+                    color: red;
+                }
+            }
+            .actions svg {
+                width: 17px;
+                height: 17px;
+                cursor: pointer;
+                margin: 0 10px;
+              }
+
+              .actions svg:hover {
+                opacity: 0.8;
+              }
+
+            .description{
+                text-align: justify;
+            }
+
+
+        }
+
+
+       
+    }
+
+
+
+
+
+   
+}
+.aplicar{
+    background-color: var.$green-color-dark;
+        border:none;
+        &:hover{
+            background-color: var.$green-color-light;
+        }
+}

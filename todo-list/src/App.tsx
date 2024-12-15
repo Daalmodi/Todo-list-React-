@@ -5,7 +5,6 @@ import StateModel from './models/StateModel';
 import TaskModel from './models/TaskModel';
 import { ADD, DELETE, GET, UPDATE, UPDATE_STATE_TASK } from './reducers/actions';
 import getTasks from './api/getTasks';
-import './App.css'
 import createTask from './api/createTask';
 import AddTask from './components/AddTask';
 import deleteTask from './api/deleteTask';
@@ -14,6 +13,8 @@ import updateTask from './api/updateTask';
 import Filter from './components/Filter';
 import FilterContext from './context/FilterContext';
 import FilterState from './models/FilterState';
+import Container from 'react-bootstrap/Container';
+import { Col, Row } from 'react-bootstrap';
 function App() {
   const initialState: StateModel = {
     tasks: [],
@@ -181,14 +182,23 @@ function App() {
 
   return (
 
-    <div>
-      <FilterContext.Provider value={{globalFilter,setglobalFilter}}>
-
-        <AddTask onCreateTask={onCreateHandler}></AddTask>
-        <Filter></Filter>
-        <Tasks task={state.tasks}  oneDeleteTask={ondeDeleteHandler} onUpdateTask={onUpdateHandle} onUpdatebox={checkBoxHandle}></Tasks>  
-      </FilterContext.Provider>
-    </div>
+    
+      <Container fluid >
+        <FilterContext.Provider value={{globalFilter,setglobalFilter}}>
+          <Row>
+            <Col xs={12} md={4} lg={3} >
+              <div className='newTask'>
+                <AddTask onCreateTask={onCreateHandler} ></AddTask>
+                <Filter></Filter>
+              </div>
+            </Col>
+            <Col xs={12} md={8} lg={9} className='taskComponet'>
+              <Tasks task={state.tasks}  oneDeleteTask={ondeDeleteHandler} onUpdateTask={onUpdateHandle} onUpdatebox={checkBoxHandle}></Tasks>  
+            </Col>
+          </Row>
+        </FilterContext.Provider>
+      </Container>
+    
   )
 };
 export default App;

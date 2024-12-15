@@ -1,0 +1,19 @@
+@use '../var.scss'as var;
+
+.addtaskComponent{
+    font-family: var.$primary-font;
+    h2{
+        color: var.$second-green;
+    }
+
+    Button{
+        
+        background-color: var.$green-color-dark;
+        border:none;
+        &:hover{
+            background-color: var.$green-color-light;
+        }
+    
+    }
+
+}

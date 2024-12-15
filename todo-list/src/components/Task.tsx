@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import UpdateTask from "./UpdateTask";
 import TaskModel from "../models/TaskModel";
+import { Pencil, Trash } from 'react-bootstrap-icons';
 
 const Task: React.FC<TaskProps>=({task,onDelete,onUpdatebox,onUpdateTask})=>{
     const [show, setShow] = useState(false);
@@ -46,19 +47,19 @@ const onUpdate = (task:TaskModel) => {
     
     return(
         <>
-             {task.map((tarea)=>(
+             {task?.map((tarea)=>(
                  <tr key={tarea.id}>
-                     <td><input type="checkbox" checked={tarea.completed} onChange={()=>onUpdatebox&&onUpdatebox(tarea.id,tarea.completed)}></input></td>
-                    <td>{tarea.id}</td>
+                     <td className="checkbox"><input type="checkbox" checked={tarea.completed} onChange={()=>onUpdatebox&&onUpdatebox(tarea.id,tarea.completed)}></input></td>
+                    
                     <td>{tarea.title}</td>
-                    <td>{tarea.description}</td>
-                    <td>{new Date(tarea.dueDate).toISOString().split('T')[0]}</td>
-                    <td>{priorityMap[tarea.priority]}</td>
+                    <td className="description">{tarea.description}</td>
+                    <td >{new Date(tarea.dueDate).toISOString().split('T')[0]}</td>
+                    <td >{priorityMap[tarea.priority]}</td>
                     <td>{categoryMap[tarea.category]}</td>
                     <td>{new Date(tarea.createdAt).toISOString().split('T')[0]}</td>
-                    <td>
-                    <Button variant="primary" onClick={()=>handleEdit(tarea.id)}>Edit</Button>
-                        <button onClick={()=>onDelete && onDelete(tarea.id)}>Delete</button>
+                    <td className="actions">
+                        <Pencil className="pensil" onClick={() => handleEdit(tarea.id)} />
+                        <Trash className="trash" onClick={() => onDelete && onDelete(tarea.id)} />
                     </td>
 
                 </tr>
@@ -72,8 +73,8 @@ const onUpdate = (task:TaskModel) => {
                             <UpdateTask  task={task} idUpdate={selectedTaskId} onUpdate={onUpdate}></UpdateTask>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="secondary" onClick={()=>setShow(false)}>Close</Button>
-                            <Button variant="primary" onClick={()=>handleSaveTask()}>Save Changes</Button>
+                            <Button variant="secondary" onClick={()=>setShow(false)}>Cerrar</Button>
+                            <Button variant="primary" className="aplicar" onClick={()=>handleSaveTask()}>Aplicar</Button>
                         </Modal.Footer>
                     </Modal>   
  

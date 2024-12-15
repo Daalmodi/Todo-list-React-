@@ -1,0 +1,38 @@
+@use'./var.scss' as var;
+body{
+  background-color: rgb(215, 213, 213);
+}
+
+.newTask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 25%;
+    padding: 20px ;
+    background-color:var.$primary-green;
+    overflow-y:auto;
+    color: white;
+    scrollbar-width: thin;
+    scrollbar-color: #666 var.$primary-green;
+
+  
+}
+
+
+.tasklist {
+  padding: 30px;
+  width: 100%;
+  
+  align-self: center;
+  align-items: center;
+
+  
+}
+
+
+
+
+
+
+

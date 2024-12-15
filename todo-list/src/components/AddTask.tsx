@@ -35,22 +35,25 @@ const AddTask : React.FC<AddTaskProps>=({onCreateTask})=>{
 
 return(
     <>
-      <Form onSubmit={handleSubmit}>
+    <div className="addtaskComponent">
+      <h2>Añadir Tarea</h2>
+  <Form onSubmit={handleSubmit}>
   {/* Campo para el título */}
   <Form.Group className="mb-3" controlId="title">
-    <Form.Label>Título</Form.Label>
+    <Form.Label>Título*</Form.Label>
     <Form.Control
       type="text"
       value={task.title}
       onChange={handleChange}
       name="title"
       placeholder="Escribe el título de la tarea"
+      required
     />
   </Form.Group>
 
   {/* Campo para la descripción */}
   <Form.Group className="mb-3" controlId="description">
-    <Form.Label>Descripción</Form.Label>
+    <Form.Label>Descripción*</Form.Label>
     <Form.Control
       as="textarea"
       rows={3}
@@ -58,6 +61,7 @@ return(
       onChange={handleChange}
       name="description"
       placeholder="Escribe la descripción de la tarea"
+      required
     />
   </Form.Group>
 
@@ -107,6 +111,7 @@ return(
 </Form>
 
       
+    </div>
     </>
 )
 
