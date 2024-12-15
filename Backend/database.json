@@ -1,34 +1,94 @@
 {
-    "tasks":[
-        {
-            "id": "1",
-            "title": "Proyecto de trabajo",
-            "description": "Entregar informe de avance",
-            "dueDate": "2024-12-15",
-            "priority": "high",
-            "category": "work",
-            "completed": false,
-            "createdAt": "2024-12-09"
-          },
-          {
-            "id": "2",
-            "title": "Estudiar para examen",
-            "description": "Repasar notas y hacer prácticas",
-            "dueDate": "2024-12-20",
-            "priority": "medium",
-            "category": "study",
-            "completed": false,
-            "createdAt": "2024-12-08"
-          },
-          {
-            "id": "3",
-            "title": "Cumpleaños de amigo",
-            "description": "Comprar regalo y enviar tarjeta",
-            "dueDate": "2024-12-12",
-            "priority": "low",
-            "category": "personal",
-            "completed": true,
-            "createdAt": "2024-12-05"
-          }
-    ]
+  "tasks": [
+    {
+      "id": "c8d999bd-441c-46cc-9221-664acd01b085",
+      "title": "Asear el cuarto ",
+      "description": "hoy vamos a tender la cama ",
+      "dueDate": "2025-02-11T00:00:00.000Z",
+      "priority": "high",
+      "category": "study",
+      "completed": true,
+      "createdAt": "2024-12-13T17:04:19.757Z"
+    },
+    {
+      "id": "fba9a6bf-da44-4210-9962-ee22a2f0a4bf",
+      "title": "nueva tarea para realizar ",
+      "description": "no tiene descripciomn ",
+      "dueDate": "2024-12-26T00:00:00.000Z",
+      "priority": "high",
+      "category": "work",
+      "completed": false,
+      "createdAt": "2024-12-13T17:23:19.120Z"
+    },
+    {
+      "id": "30ecde08-bdc5-4db1-9d12-34a6260244db",
+      "title": " Terminar el proyecto ",
+      "description": "ir a temirnr el proyecto propuesto sobre bases de datos con Mysql ",
+      "dueDate": "2024-12-30T00:00:00.000Z",
+      "priority": "low",
+      "category": "study",
+      "completed": true,
+      "createdAt": "2024-12-13T17:35:54.822Z"
+    },
+    {
+      "id": "1bce4057-92d4-4c17-8f2c-a4b1e63c2dd8",
+      "title": "ir de compras con mi mama",
+      "description": "ir a la tienda a comprar muchas cosas",
+      "dueDate": "2024-12-19T00:00:00.000Z",
+      "priority": "medium",
+      "category": "personal",
+      "completed": true,
+      "createdAt": "2024-12-14T21:06:23.189Z"
+    },
+    {
+      "id": "7c77a8b8-dc8f-4fc3-b47a-97cf268dde8c",
+      "title": "programar ",
+      "description": "hacer tarea de todolist",
+      "dueDate": "2024-12-18T00:00:00.000Z",
+      "priority": "medium",
+      "category": "personal",
+      "completed": false,
+      "createdAt": "2024-12-15T03:26:35.394Z"
+    },
+    {
+      "id": "f57b3bc5-734d-4792-a1b2-47f0f03ff4b4",
+      "title": "leer 100 años de soledad ",
+      "description": "pagina 15",
+      "dueDate": "2024-12-17T00:00:00.000Z",
+      "priority": "medium",
+      "category": "personal",
+      "completed": true,
+      "createdAt": "2024-12-15T12:55:37.106Z"
+    },
+    {
+      "id": "2f32827c-a829-42af-8f87-b462db771406",
+      "title": "ir al gym ",
+      "description": "dia de pierna ",
+      "dueDate": "2024-12-26T00:00:00.000Z",
+      "priority": "low",
+      "category": "personal",
+      "completed": true,
+      "createdAt": "2024-12-15T12:56:12.994Z"
+    },
+    {
+      "id": "5594b488-0b9d-4a1a-a630-1e9544abc2c0",
+      "title": "terminar el proyecto ",
+      "description": "agregar ajustes",
+      "dueDate": "2025-01-08T00:00:00.000Z",
+      "priority": "high",
+      "category": "work",
+      "completed": false,
+      "createdAt": "2024-12-15T12:56:44.556Z"
+    },
+    {
+      "id": "4f555a29-e0cd-4a97-a06b-929b8e9c582d",
+      "title": "leer la guia de scrum ",
+      "description": "subrayar lideas principales ",
+      "dueDate": "2025-01-24T00:00:00.000Z",
+      "priority": "medium",
+      "category": "study",
+      "completed": true,
+      "createdAt": "2024-12-15T12:57:26.310Z"
+    }
+  ]
 }
